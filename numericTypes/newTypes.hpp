@@ -39,22 +39,22 @@ private:
 
 // Type aliases
 #define assertTypeAlignment(type)                                              \
-	static_assert(sizeof(type) == sizeof(type::Type),                          \
-	              "Misaligned type: " #type)
+    static_assert(sizeof(type) == sizeof(type::Type), "Misaligned "            \
+                                                      "type: " #type)
 
 #define createUnsignedType(size)                                               \
-	using u##size = NumericWrapper<u##int##size##_t>;                          \
-	assertTypeAlignment(u##size);
+    using u##size = NumericWrapper<u##int##size##_t>;                          \
+    assertTypeAlignment(u##size);
 #define createSignedType(size)                                                 \
-	using i##size = NumericWrapper<int##size##_t>;                             \
-	assertTypeAlignment(i##size);
+    using i##size = NumericWrapper<int##size##_t>;                             \
+    assertTypeAlignment(i##size);
 
 #define createIntType(size) createUnsignedType(size) createSignedType(size)
 
 #define createFPType(size)                                                     \
-	using f##size =                                                            \
-	    NumericWrapper<std::conditional_t<size <= 32, float, double>>;         \
-	assertTypeAlignment(f##size);
+    using f##size =                                                            \
+        NumericWrapper<std::conditional_t<size <= 32, float, double>>;         \
+    assertTypeAlignment(f##size);
 
 createIntType(8);
 createIntType(16);
