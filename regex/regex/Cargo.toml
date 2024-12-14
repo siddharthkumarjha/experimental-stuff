@@ -1,0 +1,10 @@
+[package]
+name = "regex"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+
+[lib]
+crate-type = ["lib"]
+
+[dependencies]

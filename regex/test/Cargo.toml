@@ -1,0 +1,11 @@
+[package]
+name = "test"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+
+[lib]
+crate-type = ["lib"]
+
+[dependencies]
+regex = { path = "../regex" }
