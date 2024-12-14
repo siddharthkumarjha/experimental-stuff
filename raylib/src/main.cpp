@@ -1,6 +1,17 @@
 #include "raylib.h"
 #include <thread>
 
+void boundsCheck()
+{
+    x += dx;
+    y += dy;
+
+    if(x == 0 or x == (GetScreenWidth() - 50))
+        dx = -dx;
+    if(y == 0 or y == (GetScreenHeight() - 50))
+        dy = -dy;
+}
+
 int main(void)
 {
     InitWindow(500, 500, "My first window");
@@ -16,13 +27,7 @@ int main(void)
         DrawRectangle(x, y, 50, 50, RED);
         EndDrawing();
 
-        x += dx;
-        y += dy;
 
-        if(x == 0 or x == (GetScreenWidth() - 50))
-            dx = -dx;
-        if(y == 0 or y == (GetScreenHeight() - 50))
-            dy = -dy;
         std::this_thread::sleep_for(10ms);
     }
     CloseWindow();

@@ -14,6 +14,23 @@ struct op {};
 createOpType(eq, ==);
 createOpType(lt, <);
 
+class Foo
+{
+    int* external_counter = nullptr;
+
+public:
+    Foo() = default;
+    explicit Foo(int& counter) : external_counter(&counter) {}
+
+    void bar()
+    {
+        if (external_counter)
+            ++*external_counter;
+
+        //...
+    }
+};
+
 int main() 
 {
     u32 var = 42; // Use u32 as a type
@@ -31,6 +48,14 @@ int main()
     std::cout << var << " " << (var > u32::MAX) << '\n';
     std::cout << f32::MAX << std::endl;
     std::cout << sizeof(f64) << std::endl;
+
+
+    Foo bad{i32{}};
+    bad.bar();
+    //Foo ok_compile_error{0};
+    int counter = 0;
+    [[maybe_unused]] Foo ok{i32{}};
+    ok.bar();
 
     return 0;
 }

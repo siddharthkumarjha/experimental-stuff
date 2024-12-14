@@ -24,7 +24,17 @@ public:
 
     // Implicit conversion to the underlying type
     constexpr operator T() const { return m_storedValue; }
+#ifndef NOTEMPORARY
+    // should be enough, but...
+    constexpr operator T&() & { return m_storedValue; }
+    // ... you probably should also delete the "bad" overload to be explicit
+    // has the benefit that the compiler error becomes "use of deleted function"
+    // instead of "no matching overload", making it more explicit that this is an
+    // intentional design decision, not an oversight
+    constexpr operator T&() && = delete;
+#else
     constexpr operator T&() { return m_storedValue; }
+#endif
 
     // Assignment operator
     constexpr NumericWrapper& operator=(T l_value) 
