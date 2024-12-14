@@ -1,7 +1,8 @@
 [workspace]
 members = [
     "regex",
-    "test"
+    "test",
+    "impl",
 ]
 resolver = "2"
 

@@ -79,7 +79,7 @@ impl<'a> HaRegexStruct<'a>
         {
             return (false, 
                 String::from("unexpected tokens at the start/end of input string parsing \
-                stopped, expected \"h\" at start and \"a\" at the end"));
+                stopped.\nExpected \"h\" at start and \"a\" at the end"));
         }
 
         if self.rule_s() &&
