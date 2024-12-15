@@ -8,3 +8,8 @@ edition.workspace = true
 crate-type = ["lib"]
 
 [dependencies]
+
+[[test]]
+name = "regex-ha-test"
+path = "../test/src/regex_ha_test.rs"
+harness = true
