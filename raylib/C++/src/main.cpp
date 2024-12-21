@@ -1,6 +1,9 @@
 #include "raylib.h"
 #include <thread>
 
+int x = 0, y = 0;
+int dx = 1, dy = 1;
+
 void boundsCheck()
 {
     x += dx;
@@ -16,9 +19,6 @@ int main(void)
 {
     InitWindow(500, 500, "My first window");
 
-    int x = 0, y = 0;
-    int dx = 1, dy = 1;
-
     using namespace std::chrono_literals;
     while(!WindowShouldClose())
     {
@@ -27,6 +27,7 @@ int main(void)
         DrawRectangle(x, y, 50, 50, RED);
         EndDrawing();
 
+        boundsCheck();
 
         std::this_thread::sleep_for(10ms);
     }
