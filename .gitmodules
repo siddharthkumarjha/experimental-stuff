@@ -7,3 +7,6 @@
 [submodule "submodule/raylib"]
 	path = submodule/raylib
 	url = git@github.com:siddharthkumarjha/raylib-experiments.git
+[submodule "submodule/numeric-types"]
+	path = submodule/numeric-types
+	url = git@github.com:siddharthkumarjha/numeric-types.git
