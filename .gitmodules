@@ -1,3 +1,6 @@
 [submodule "submodule/regex"]
 	path = submodule/regex
 	url = git@github.com:siddharthkumarjha/regex.git
+[submodule "submodule/reflection"]
+	path = submodule/reflection
+	url = git@github.com:siddharthkumarjha/reflection.git
