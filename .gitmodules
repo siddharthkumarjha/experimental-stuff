@@ -4,3 +4,6 @@
 [submodule "submodule/reflection"]
 	path = submodule/reflection
 	url = git@github.com:siddharthkumarjha/reflection.git
+[submodule "submodule/raylib"]
+	path = submodule/raylib
+	url = git@github.com:siddharthkumarjha/raylib-experiments.git
