@@ -1,0 +1,3 @@
+[submodule "submodule/regex"]
+	path = submodule/regex
+	url = git@github.com:siddharthkumarjha/regex.git
