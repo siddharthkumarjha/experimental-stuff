@@ -13,3 +13,6 @@
 [submodule "submodule/elf-probe"]
 	path = submodule/elf-probe
 	url = git@github.com:siddharthkumarjha/elf-probe.git
+[submodule "submodule/cpp-modules"]
+	path = submodule/cpp-modules
+	url = git@github.com:siddharthkumarjha/cpp-module.git
