@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/siddharth/project/trial/submodule/timer/",
+  "command": "/usr/bin/c++  -std=c++20 /home/siddharth/project/trial/submodule/timer/timer.cpp",
+  "file": "/home/siddharth/project/trial/submodule/timer/timer.cpp",
+  "output": "tim"
+}
+]
