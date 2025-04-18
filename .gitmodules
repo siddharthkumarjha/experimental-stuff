@@ -16,3 +16,6 @@
 [submodule "submodule/cpp-modules"]
 	path = submodule/cpp-modules
 	url = git@github.com:siddharthkumarjha/cpp-module.git
+[submodule "submodule/merge-k-sorted-lists"]
+	path = submodule/merge-k-sorted-lists
+	url = git@github.com:siddharthkumarjha/merge-k-link-lists.git
