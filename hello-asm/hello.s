@@ -1,9 +1,10 @@
+.section .rodata
 msg:
-    .ascii "Hello, World\n"
+    .asciz "Hello, World\n"
 msg_len = . - msg
 
 .global _start
-
+.section .text
 _start:
 mov $1, %rax
 mov $1, %rdi
