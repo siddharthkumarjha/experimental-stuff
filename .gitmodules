@@ -19,3 +19,6 @@
 [submodule "submodule/merge-k-sorted-lists"]
 	path = submodule/merge-k-sorted-lists
 	url = git@github.com:siddharthkumarjha/merge-k-link-lists.git
+[submodule "submodule/lua"]
+	path = submodule/lua
+	url = git@github.com:siddharthkumarjha/lua-cpp-wrapper.git
