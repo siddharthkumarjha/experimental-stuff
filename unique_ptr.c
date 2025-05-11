@@ -6,17 +6,28 @@
 typedef void *pointer;
 typedef void (*dealloc_fn_t)(pointer);
 
-typedef struct unique_ptr_t
+typedef struct
 {
     pointer ptr;
     size_t size_of;
     dealloc_fn_t dealloc_fn;
 } unique_ptr_t;
 
+#define NULL_UNIQUE_PTR                                                        \
+    (unique_ptr_t) { .ptr = NULL, .size_of = 0, .dealloc_fn = NULL }
+
 static void cleanup_heap_pointer(unique_ptr_t *ptr)
 {
     if (ptr->ptr != NULL && ptr->dealloc_fn != NULL)
         ptr->dealloc_fn(ptr->ptr);
+    *ptr = NULL_UNIQUE_PTR;
+}
+
+void take_ptr_ownership(unique_ptr_t *new_owner, unique_ptr_t *old_owner)
+{
+    cleanup_heap_pointer(new_owner);
+    *new_owner = *old_owner;
+    *old_owner = NULL_UNIQUE_PTR;
 }
 
 #define SIZEOF(P) P.size_of
@@ -28,9 +39,6 @@ static void cleanup_heap_pointer(unique_ptr_t *ptr)
 #define GET(...)                                                               \
     GET_TYPE_CAST_MACRO(__VA_ARGS__, GET_WITH_TYPE_CAST,                       \
                         GET_WITH_NO_CAST)(__VA_ARGS__)
-
-#define NULL_UNIQUE_PTR                                                        \
-    (unique_ptr_t) { .ptr = NULL, .size_of = 0, .dealloc_fn = NULL }
 
 #define IS_NULL(P) (GET(P) == NULL)
 
@@ -55,20 +63,12 @@ static void cleanup_heap_pointer(unique_ptr_t *ptr)
     __attribute__((__cleanup__(cleanup_heap_pointer))) unique_ptr_t
 #define DECLARE_UNIQUE_PTR(name) UNIQUE_PTR name
 
-#define TAKE_PTR_OWNERSHIP(NEW_OWNER, OLD_OWNER)                               \
-    do                                                                         \
-    {                                                                          \
-        cleanup_heap_pointer(&NEW_OWNER);                                      \
-        NEW_OWNER = OLD_OWNER;                                                 \
-        OLD_OWNER = NULL_UNIQUE_PTR;                                           \
-    } while (0);
-
 const size_t SIZE_OF_ARR = 24;
 
 static void print_ptr_arr(unique_ptr_t *a)
 {
     DECLARE_UNIQUE_PTR(tmp_unq_ptr) = NULL_UNIQUE_PTR;
-    TAKE_PTR_OWNERSHIP(tmp_unq_ptr, *a);
+    take_ptr_ownership(&tmp_unq_ptr, a);
 
     write(STDOUT_FILENO, GET(tmp_unq_ptr), SIZEOF(tmp_unq_ptr));
     putchar('\n');
