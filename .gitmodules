@@ -25,3 +25,6 @@
 [submodule "submodule/vtable"]
 	path = submodule/vtable
 	url = git@github.com:siddharthkumarjha/vtable.git
+[submodule "submodule/gRPC"]
+	path = submodule/gRPC
+	url = git@github.com:siddharthkumarjha/grpc-rust-example.git
