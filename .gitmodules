@@ -28,3 +28,6 @@
 [submodule "submodule/gRPC"]
 	path = submodule/gRPC
 	url = git@github.com:siddharthkumarjha/grpc-rust-example.git
+[submodule "submodule/zig-probe"]
+	path = submodule/zig-probe
+	url = git@github.com:siddharthkumarjha/zig-probe.git
