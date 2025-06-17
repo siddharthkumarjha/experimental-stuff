@@ -31,3 +31,6 @@
 [submodule "submodule/zig-probe"]
 	path = submodule/zig-probe
 	url = git@github.com:siddharthkumarjha/zig-probe.git
+[submodule "submodule/hashtable"]
+	path = submodule/hashtable
+	url = git@github.com:siddharthkumarjha/hashtable-rs.git
